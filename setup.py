@@ -1,10 +1,13 @@
-#!/usr/bin/python3
-from distutils.core import setup
-import sys
+from __future__ import print_function
+from setuptools import setup
 import os
+import sys
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 if not os.access("README.txt", os.F_OK) :
-	print("Generate README.txt, using distreadem.sh (requires pandoc)", file=sys.stderr)
+	eprint("Generate README.txt, using distreadem.sh (requires pandoc)")
 	sys.exit(-1)
 long_description = open('README.txt').read()
 
@@ -29,6 +32,7 @@ setup(
 	classifiers = [
 		'Programming Language :: Python',
 		'Programming Language :: Python :: 3',
+		'Programming Language :: Python :: 2.7',
 		'Topic :: Scientific/Engineering :: GIS',
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Environment :: X11 Applications :: Qt',
